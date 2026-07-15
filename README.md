@@ -1,5 +1,3 @@
-Here is a `README.md` tailored for your repository. It incorporates the features visible in your commit history and project structure, and is formatted in standard Markdown to look great on GitHub.
-
 # 13 Years: A Friendship Appreciation Website
 
 A commemorative, interactive website crafted to celebrate a remarkable 13-year friendship with Heet. Designed to be a visual masterpiece, this project serves as a digital scrapbook and an interactive memory lane, honoring over a decade of shared experiences.
