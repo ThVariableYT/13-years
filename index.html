@@ -1,726 +1,877 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>13 Years of Us - A Journey of Friendship</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Custom Styles & Animations */
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>13 Years — A Letter to Heet</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060818;
+  --bg-2:#0a0e24;
+  --gold:#d4af37;
+  --gold-soft:#f4d35e;
+  --champagne:#f7e7b8;
+  --rose:#e8b4a0;
+  --ink:#f5f0e8;
+  --muted:#8b8a99;
+  --line:rgba(212,175,55,.16);
+}
+*{cursor:none}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  overflow-x:hidden;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 20% 0%,rgba(212,175,55,.08),transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 30%,rgba(232,180,160,.06),transparent 60%),
+    radial-gradient(ellipse 70% 50% at 50% 100%,rgba(244,211,94,.05),transparent 60%);
+}
+.font-display{font-family:'Fraunces',serif;font-variation-settings:"opsz" 144}
+.font-serif{font-family:'Fraunces',serif}
+.font-script{font-family:'Caveat',cursive}
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #050814;
-            color: #e2e8f0;
-            overflow-x: hidden;
-        }
+#grain{
+  position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.035;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+#aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.aurora-blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.45;mix-blend-mode:screen}
+.b1{width:520px;height:520px;background:radial-gradient(circle,#d4af37,transparent 70%);top:-10%;left:-5%;animation:drift1 22s ease-in-out infinite}
+.b2{width:480px;height:480px;background:radial-gradient(circle,#e8b4a0,transparent 70%);top:30%;right:-8%;animation:drift2 26s ease-in-out infinite}
+.b3{width:600px;height:600px;background:radial-gradient(circle,#7a5cff,transparent 70%);bottom:-10%;left:30%;animation:drift3 30s ease-in-out infinite;opacity:.25}
+@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(80px,60px) scale(1.15)}}
+@keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-60px,80px) scale(.9)}}
+@keyframes drift3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-80px,-60px) scale(1.1)}}
 
-        h1, h2, h3, .serif {
-            font-family: 'Playfair Display', serif;
-        }
+#particle-canvas{position:fixed;inset:0;z-index:0;pointer-events:none}
 
-        /* Canvas Background */
-        #particle-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            pointer-events: none;
-        }
+#scroll-progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--gold),var(--champagne),var(--rose));z-index:100;box-shadow:0 0 12px rgba(212,175,55,.6)}
 
-        /* Glowing Text Effects */
-        .glow-text {
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5), 0 0 40px rgba(212, 175, 55, 0.3);
-        }
+.cursor-dot{position:fixed;top:0;left:0;width:6px;height:6px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .15s ease,background .2s ease,width .2s,height .2s}
+.cursor-ring{position:fixed;top:0;left:0;width:36px;height:36px;border:1px solid rgba(212,175,55,.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .25s ease,width .25s,height .25s,border-color .25s}
+.cursor-ring.hover{width:60px;height:60px;border-color:var(--gold-soft);background:rgba(212,175,55,.06)}
+@media (max-width:768px){.cursor-dot,.cursor-ring{display:none}*{cursor:auto}}
 
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
+.glow-text{text-shadow:0 0 30px rgba(212,175,55,.45),0 0 60px rgba(212,175,55,.25)}
+.text-gradient{
+  background:linear-gradient(270deg,#d4af37 0%,#f7e7b8 25%,#ffdf6b 50%,#f7e7b8 75%,#d4af37 100%);
+  background-size:300% 300%;animation:gradient-shift 9s ease infinite;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+}
+@keyframes gradient-shift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+.floating{animation:float 7s ease-in-out infinite}
+@keyframes float-slow{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-12px) rotate(2deg)}}
+.floating-slow{animation:float-slow 9s ease-in-out infinite}
 
-        /* Scroll Reveal Classes */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
-        }
+.reveal{opacity:0;transform:translateY(50px);transition:all 1.1s cubic-bezier(.2,.7,.2,1)}
+.reveal.active{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-60px);transition:all 1.1s cubic-bezier(.2,.7,.2,1)}
+.reveal-left.active{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(60px);transition:all 1.1s cubic-bezier(.2,.7,.2,1)}
+.reveal-right.active{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.9);transition:all 1.1s cubic-bezier(.2,.7,.2,1)}
+.reveal-scale.active{opacity:1;transform:scale(1)}
 
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+.word{display:inline-block;opacity:0;transform:translateY(20px);transition:all .8s cubic-bezier(.2,.7,.2,1)}
+.word.active{opacity:1;transform:translateY(0)}
 
-        /* 3D Tilt Card */
-        .tilt-card-container {
-            perspective: 1000px;
-        }
+.glass-panel{
+  background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,rgba(255,255,255,.01) 100%);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.06);
+  box-shadow:0 20px 60px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.04);
+}
+.glass-card{
+  background:linear-gradient(135deg,rgba(255,255,255,.035) 0%,rgba(255,255,255,.01) 100%);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.05);
+  transition:all .5s cubic-bezier(.2,.7,.2,1);
+  position:relative;overflow:hidden;
+}
+.glass-card::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;
+  background:linear-gradient(135deg,rgba(212,175,55,.4),transparent 40%,transparent 60%,rgba(232,180,160,.3));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .5s;
+}
+.glass-card:hover::after{opacity:1}
+.glass-card:hover{transform:translateY(-6px);box-shadow:0 30px 60px rgba(0,0,0,.5),0 0 40px rgba(212,175,55,.12)}
 
-        .tilt-card {
-            transition: transform 0.1s ease;
-            transform-style: preserve-3d;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
+.tilt-card-container{perspective:1400px}
+.tilt-card{
+  transition:transform .15s ease;transform-style:preserve-3d;
+  background:linear-gradient(135deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,.01) 100%);
+  backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 30px 70px rgba(0,0,0,.5);
+  --spotlight-x:50%;--spotlight-y:50%;
+}
+.tilt-card::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;
+  background:radial-gradient(circle 280px at var(--spotlight-x) var(--spotlight-y),rgba(244,211,94,.18) 0%,transparent 60%);
+  pointer-events:none;opacity:0;transition:opacity .35s;
+}
+.tilt-card:hover::before{opacity:1}
+.tilt-card-content{transform:translateZ(60px)}
+.tilt-card-layer{transform:translateZ(30px)}
 
-        .tilt-card-content {
-            transform: translateZ(50px);
-        }
+.divider-ornament{display:flex;align-items:center;justify-content:center;gap:1rem;color:var(--gold)}
+.divider-ornament::before,.divider-ornament::after{content:"";height:1px;width:80px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
 
-        /* Timeline Styles */
-        .timeline-line {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(to bottom, transparent, #d4af37, transparent);
-        }
+.btn-gold{
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#d4af37 0%,#f4d35e 50%,#d4af37 100%);
+  background-size:200% 200%;color:#0a0a0a;
+  transition:all .4s ease;
+}
+.btn-gold:hover{background-position:100% 0;box-shadow:0 12px 40px rgba(212,175,55,.4);transform:translateY(-2px)}
+.btn-ghost{
+  background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.12);color:var(--ink);
+  transition:all .4s ease;
+}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-soft);background:rgba(212,175,55,.05);transform:translateY(-2px)}
 
-        /* Animated Gradient Text */
-        .text-gradient {
-            background: linear-gradient(270deg, #d4af37, #f3e5ab, #ffdf00, #d4af37);
-            background-size: 300% 300%;
-            animation: gradient-shift 8s ease infinite;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+.timeline-wrap{position:relative}
+.timeline-line{position:absolute;left:50%;top:0;transform:translateX(-50%);width:2px;height:100%;background:linear-gradient(to bottom,transparent,rgba(212,175,55,.25),rgba(212,175,55,.25),transparent)}
+.timeline-progress{position:absolute;left:50%;top:0;transform:translateX(-50%);width:2px;height:0;background:linear-gradient(to bottom,var(--gold),var(--champagne));box-shadow:0 0 16px rgba(212,175,55,.6);transition:height .1s linear}
+.timeline-dot{position:absolute;left:50%;transform:translateX(-50%);width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--gold);box-shadow:0 0 0 4px rgba(212,175,55,.15),0 0 20px rgba(212,175,55,.5);transition:all .4s ease}
+.timeline-dot.active{background:var(--gold);box-shadow:0 0 0 6px rgba(212,175,55,.25),0 0 30px rgba(212,175,55,.8);transform:translateX(-50%) scale(1.2)}
 
-        @keyframes gradient-shift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+.album-section{perspective:1400px;overflow:hidden;padding:3rem 0 5rem}
+.album-container{position:relative;width:100%;max-width:320px;height:420px;margin:0 auto;transform-style:preserve-3d}
+.album-item{position:absolute;top:0;left:0;width:100%;height:100%;border-radius:1.25rem;overflow:hidden;transition:transform .7s cubic-bezier(.4,0,.2,1),opacity .7s ease;opacity:0;pointer-events:none;box-shadow:0 20px 50px rgba(0,0,0,.6);border:1px solid rgba(212,175,55,.15);background:#0f1423}
+.album-item .frame{position:absolute;inset:0;border:1px solid rgba(247,231,184,.25);border-radius:1.25rem;pointer-events:none;z-index:3;box-shadow:inset 0 0 60px rgba(0,0,0,.4)}
+.album-item .shimmer{position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.18) 50%,transparent 70%);transform:translateX(-100%);pointer-events:none;z-index:4}
+.album-item.active .shimmer{animation:shimmer 2.4s ease}
+@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.album-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;filter:saturate(.92) contrast(1.05)}
+.album-item.active img{transform:scale(1.06)}
+.album-item.active{opacity:1;transform:translateX(0) scale(1) translateZ(0);z-index:10;pointer-events:auto;border-color:rgba(212,175,55,.7);box-shadow:0 0 50px rgba(212,175,55,.25),0 25px 60px rgba(0,0,0,.6)}
+.album-item.prev1{opacity:.65;transform:translateX(-62%) scale(.84) translateZ(-120px) rotateY(18deg);z-index:5}
+.album-item.next1{opacity:.65;transform:translateX(62%) scale(.84) translateZ(-120px) rotateY(-18deg);z-index:5}
+.album-item.prev2{opacity:.28;transform:translateX(-118%) scale(.68) translateZ(-240px) rotateY(28deg);z-index:1}
+.album-item.next2{opacity:.28;transform:translateX(118%) scale(.68) translateZ(-240px) rotateY(-28deg);z-index:1}
+.album-item .placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;background:linear-gradient(135deg,#0f1423,#1a1f35);color:rgba(247,231,184,.6)}
 
-        /* Glassmorphism Panel */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        }
-        
-        /* Spotlight Effect for Tilt Card */
-        .tilt-card {
-            transition: transform 0.1s ease;
-            transform-style: preserve-3d;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            --spotlight-x: 50%;
-            --spotlight-y: 50%;
-        }
+.spinner{border:3px solid rgba(255,255,255,.08);border-left-color:var(--gold);border-radius:50%;width:32px;height:32px;animation:spin 1s linear infinite}
+@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
 
-        .tilt-card::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at var(--spotlight-x) var(--spotlight-y), rgba(212,175,55,0.15) 0%, transparent 60%);
-            pointer-events: none;
-            z-index: 1;
-            transition: opacity 0.3s;
-            opacity: 0;
-            border-radius: inherit;
-        }
+@keyframes heartbeat{0%,100%{transform:scale(1)}10%{transform:scale(1.15)}20%{transform:scale(1)}30%{transform:scale(1.1)}40%{transform:scale(1)}}
+.heartbeat{animation:heartbeat 2.4s ease infinite}
 
-        .tilt-card:hover::before {
-            opacity: 1;
-        }
+@keyframes orbit{0%{transform:rotate(0) translateX(40px) rotate(0)}100%{transform:rotate(360deg) translateX(40px) rotate(-360deg)}}
 
-        .tilt-card-content {
-            transform: translateZ(50px);
-        }
+.quality-icon{transition:all .5s cubic-bezier(.2,.7,.2,1)}
+.glass-card:hover .quality-icon{transform:translateY(-4px) scale(1.1) rotate(-6deg)}
 
-        /* 3D Photo Album Animation */
-        .album-section {
-            perspective: 1200px;
-            overflow: hidden;
-            padding-top: 2rem;
-            padding-bottom: 4rem;
-        }
-        .album-container {
-            position: relative;
-            width: 100%;
-            max-width: 300px;
-            height: 400px;
-            margin: 0 auto;
-            transform-style: preserve-3d;
-        }
-        .album-item {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 1rem;
-            overflow: hidden;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease;
-            opacity: 0;
-            pointer-events: none;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-            border: 2px solid rgba(212,175,55,0.2);
-            background: #0f1423;
-        }
-        .album-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        .album-item.active img {
-            transform: scale(1.05);
-        }
-        .album-item.active {
-            opacity: 1;
-            transform: translateX(0) scale(1) translateZ(0);
-            z-index: 10;
-            pointer-events: auto;
-            border-color: rgba(212,175,55,0.8);
-            box-shadow: 0 0 40px rgba(212,175,55,0.3);
-        }
-        .album-item.prev1 {
-            opacity: 0.7;
-            transform: translateX(-65%) scale(0.85) translateZ(-100px) rotateY(15deg);
-            z-index: 5;
-        }
-        .album-item.next1 {
-            opacity: 0.7;
-            transform: translateX(65%) scale(0.85) translateZ(-100px) rotateY(-15deg);
-            z-index: 5;
-        }
-        .album-item.prev2 {
-            opacity: 0.3;
-            transform: translateX(-120%) scale(0.7) translateZ(-200px) rotateY(25deg);
-            z-index: 1;
-        }
-        .album-item.next2 {
-            opacity: 0.3;
-            transform: translateX(120%) scale(0.7) translateZ(-200px) rotateY(-25deg);
-            z-index: 1;
-        }
+.signature-line{stroke-dasharray:600;stroke-dashoffset:600;animation:draw 3s ease forwards .8s}
+@keyframes draw{to{stroke-dashoffset:0}}
 
-        /* Spinner Animation */
-        .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.1);
-            border-left-color: #d4af37;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-        }
+@keyframes scrollHint{0%{transform:translateY(0);opacity:0}30%{opacity:1}100%{transform:translateY(10px);opacity:0}}
+.scroll-hint{animation:scrollHint 1.8s ease-in-out infinite}
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
+.nav-pill{background:rgba(10,14,36,.6);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.06);box-shadow:0 10px 40px rgba(0,0,0,.4)}
+
+::selection{background:rgba(212,175,55,.3);color:#fff}
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:#060818}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--gold),#7a5f1a);border-radius:4px}
+
+.flash-on-hover{position:relative}
+.flash-on-hover::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at center,rgba(247,231,184,.3),transparent 60%);opacity:0;transition:opacity .4s;pointer-events:none}
+.flash-on-hover:hover::after{opacity:1}
+
+.stat-number{font-variant-numeric:tabular-nums}
+</style>
 </head>
-<body class="antialiased selection:bg-yellow-600 selection:text-white">
+<body>
 
-    <!-- Interactive Particle Background -->
-    <canvas id="particle-canvas"></canvas>
+<div id="grain"></div>
+<div id="aurora">
+  <div class="aurora-blob b1"></div>
+  <div class="aurora-blob b2"></div>
+  <div class="aurora-blob b3"></div>
+</div>
+<canvas id="particle-canvas"></canvas>
+<div id="scroll-progress"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-dot" id="cursorDot"></div>
 
-    <!-- Hero Section -->
-    <section class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative">
-        <div class="floating z-10">
-            <p class="text-yellow-500 tracking-[0.3em] uppercase text-sm md:text-base mb-4 font-semibold reveal">2013 — 2026</p>
-            <h1 class="text-6xl md:text-8xl font-bold mb-4 text-gradient glow-text reveal" style="transition-delay: 200ms;">13 Years.</h1>
-            <h2 class="text-4xl md:text-6xl text-white font-bold serif reveal mb-4 drop-shadow-lg" style="transition-delay: 300ms;">For Heet,</h2>
-            <h3 class="text-2xl md:text-4xl text-gray-300 font-light italic reveal" style="transition-delay: 400ms;">More than a friendship. A brotherhood.</h3>
+<nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:flex nav-pill rounded-full px-2 py-2 items-center gap-1 reveal-scale" data-hover>
+  <a href="#hero" class="px-4 py-2 text-xs uppercase tracking-[0.2em] text-gray-400 hover:text-yellow-300 transition-colors rounded-full">Home</a>
+  <a href="#message" class="px-4 py-2 text-xs uppercase tracking-[0.2em] text-gray-400 hover:text-yellow-300 transition-colors rounded-full">Letter</a>
+  <a href="#timeline" class="px-4 py-2 text-xs uppercase tracking-[0.2em] text-gray-400 hover:text-yellow-300 transition-colors rounded-full">Chapters</a>
+  <a href="#album" class="px-4 py-2 text-xs uppercase tracking-[0.2em] text-gray-400 hover:text-yellow-300 transition-colors rounded-full">Album</a>
+  <a href="#forge" class="px-4 py-2 text-xs uppercase tracking-[0.2em] text-gray-400 hover:text-yellow-300 transition-colors rounded-full">Forge</a>
+  <a href="#promise" class="px-4 py-2 text-xs uppercase tracking-[0.2em] text-gray-400 hover:text-yellow-300 transition-colors rounded-full">Promise</a>
+</nav>
+
+<section id="hero" class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative z-10">
+  <div class="floating z-10">
+    <div class="divider-ornament mb-6 reveal">
+      <span class="text-yellow-500/80 tracking-[0.4em] uppercase text-xs md:text-sm font-medium">2013 — 2026</span>
+    </div>
+    <div class="relative inline-block">
+      <h1 class="font-display text-[9rem] md:text-[16rem] leading-none font-light text-gradient glow-text reveal" style="transition-delay:.15s" id="bigNumber">13</h1>
+      <span class="font-script text-3xl md:text-5xl text-rose-300/80 absolute -right-4 md:-right-12 top-2 reveal" style="transition-delay:.5s">yrs</span>
+    </div>
+    <h2 class="font-display text-5xl md:text-7xl font-light text-white reveal mt-2 tracking-tight" style="transition-delay:.25s">For <span class="italic text-gradient">Heet</span>,</h2>
+    <h3 class="font-serif text-xl md:text-3xl text-gray-400 font-light italic reveal mt-4 max-w-2xl mx-auto leading-relaxed" style="transition-delay:.35s">More than a friendship — a brotherhood, written in <span class="text-yellow-300/90">thirteen chapters</span>.</h3>
+    <div class="mt-10 reveal" style="transition-delay:.5s" data-hover>
+      <a href="#message" class="inline-flex items-center gap-3 px-7 py-3 rounded-full btn-gold font-medium text-sm tracking-wide">
+        <span>Begin the story</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+      </a>
+    </div>
+  </div>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-yellow-500/60 scroll-hint">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+  </div>
+</section>
+
+<section id="stats" class="py-16 px-6 relative z-10">
+  <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
+    <div class="glass-card rounded-2xl p-6 text-center reveal" data-stat="13" data-suffix="">
+      <div class="font-display text-4xl md:text-5xl text-gradient stat-number font-light">0</div>
+      <div class="text-xs uppercase tracking-[0.25em] text-gray-500 mt-2">Years</div>
+    </div>
+    <div class="glass-card rounded-2xl p-6 text-center reveal" style="transition-delay:.1s" data-stat="4745" data-suffix="">
+      <div class="font-display text-4xl md:text-5xl text-gradient stat-number font-light">0</div>
+      <div class="text-xs uppercase tracking-[0.25em] text-gray-500 mt-2">Days</div>
+    </div>
+    <div class="glass-card rounded-2xl p-6 text-center reveal" style="transition-delay:.2s" data-stat="113880" data-suffix="">
+      <div class="font-display text-4xl md:text-5xl text-gradient stat-number font-light">0</div>
+      <div class="text-xs uppercase tracking-[0.25em] text-gray-500 mt-2">Hours</div>
+    </div>
+    <div class="glass-card rounded-2xl p-6 text-center reveal" style="transition-delay:.3s">
+      <div class="font-display text-4xl md:text-5xl text-gradient font-light">∞</div>
+      <div class="text-xs uppercase tracking-[0.25em] text-gray-500 mt-2">Memories</div>
+    </div>
+  </div>
+</section>
+
+<section id="message" class="py-32 px-6 max-w-4xl mx-auto text-center relative z-10">
+  <div class="reveal glass-panel rounded-[2rem] p-8 md:p-16 relative overflow-hidden">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-72 h-72 bg-yellow-600/15 rounded-full blur-[90px] pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-72 h-72 bg-rose-400/10 rounded-full blur-[90px] pointer-events-none"></div>
+    <div class="divider-ornament mb-8 reveal">
+      <svg class="w-5 h-5 text-yellow-500 heartbeat" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+    </div>
+    <p class="font-script text-3xl text-rose-300/80 mb-4 reveal" style="transition-delay:.1s">a letter to my brother</p>
+    <h3 class="font-display text-4xl md:text-6xl font-light text-white mb-10 reveal leading-tight" style="transition-delay:.2s">To Heet, <span class="italic text-gradient">the one who stayed.</span></h3>
+    <p class="text-base md:text-lg text-gray-400 leading-loose mb-6 reveal" data-words style="transition-delay:.3s">Thirteen years is a long time. It's enough time to watch the world change, to see people come and go, and to grow into entirely different versions of ourselves. Yet, through every phase, every hardship, and every triumph, one thing remained constant — us.</p>
+    <p class="text-base md:text-lg text-gray-400 leading-loose mb-6 reveal" data-words style="transition-delay:.4s">We've shared silences that spoke louder than words, and laughter that made our ribs ache. You aren't just a friend anymore; you are the family I chose. This isn't just about counting the years; it's about making the years count.</p>
+    <div class="reveal" style="transition-delay:.5s">
+      <p class="font-serif italic text-xl md:text-2xl text-yellow-300/90 leading-relaxed mt-10 max-w-2xl mx-auto">"Here is to the memories we've forged, and the lifetime of adventures still awaiting us."</p>
+      <p class="font-script text-2xl text-rose-300/70 mt-6">— always, your brother</p>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 px-6 flex justify-center items-center min-h-[70vh] tilt-card-container relative z-10">
+  <div class="tilt-card w-full max-w-2xl rounded-[2rem] p-10 md:p-16 text-center reveal relative overflow-hidden" id="tiltCard" data-hover>
+    <div class="absolute inset-0 bg-gradient-to-br from-yellow-600/15 via-transparent to-rose-400/10 pointer-events-none"></div>
+    <div class="tilt-card-content relative z-10">
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-full border border-yellow-500/30 mb-6 floating-slow">
+        <svg class="w-7 h-7 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      </div>
+      <h3 class="font-display text-3xl md:text-5xl font-light text-white mb-5">A Bond <span class="italic text-gradient">Unbroken</span></h3>
+      <p class="text-gray-300 md:text-lg mb-8 leading-relaxed max-w-xl mx-auto">Move your cursor over this card. Just like our friendship — it shifts, it tilts, it adapts, but it never breaks. Thank you for being my rock, my sounding board, and my brother.</p>
+      <div class="inline-block px-8 py-3 border border-yellow-500/60 text-yellow-300 rounded-full font-medium uppercase tracking-[0.25em] text-xs hover:bg-yellow-500 hover:text-black transition-all duration-300 tilt-card-layer" data-hover>
+        Forever Grateful
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="timeline" class="py-24 relative z-10">
+  <div class="text-center mb-20 px-6">
+    <p class="font-script text-2xl text-rose-300/70 mb-2 reveal">our shared history</p>
+    <h2 class="font-display text-4xl md:text-6xl font-light text-white reveal">The Chapters <span class="italic text-gradient">We Wrote</span></h2>
+    <div class="divider-ornament mt-6 reveal"><span class="text-yellow-500/60 text-xs tracking-[0.3em] uppercase">scroll to walk through time</span></div>
+  </div>
+  <div class="max-w-5xl mx-auto px-6 relative timeline-wrap" id="timeline-container">
+    <div class="timeline-line hidden md:block"></div>
+    <div class="timeline-progress hidden md:block" id="timelineProgress"></div>
+  </div>
+</section>
+
+<section id="qualities" class="py-24 px-6 relative z-10">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <p class="font-script text-2xl text-rose-300/70 mb-2 reveal">what makes him, him</p>
+      <h2 class="font-display text-4xl md:text-6xl font-light text-white reveal">The <span class="italic text-gradient">Qualities</span> of Heet</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="glass-card rounded-2xl p-8 reveal" data-hover>
+        <div class="quality-icon inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 mb-5">
+          <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
         </div>
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer reveal" style="transition-delay: 600ms;" onclick="document.getElementById('message').scrollIntoView({behavior: 'smooth'})">
-            <svg class="w-8 h-8 text-yellow-500 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-            </svg>
+        <h4 class="font-display text-2xl text-white mb-2">Steadfast</h4>
+        <p class="text-gray-400 leading-relaxed text-sm">Through every storm, every season — a constant. The kind of loyalty that doesn't flinch.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-8 reveal" style="transition-delay:.1s" data-hover>
+        <div class="quality-icon inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 mb-5">
+          <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
         </div>
-    </section>
-
-    <!-- Emotional Message Section -->
-    <section id="message" class="py-32 px-6 max-w-4xl mx-auto text-center relative z-10">
-        <div class="reveal glass-panel rounded-3xl p-8 md:p-16 relative overflow-hidden">
-            <!-- Decorative blur blob -->
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-yellow-600/20 rounded-full blur-[80px] -z-10 pointer-events-none"></div>
-            
-            <svg class="w-12 h-12 text-yellow-500 mx-auto mb-8 opacity-80 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-            </svg>
-            <h3 class="text-4xl md:text-5xl font-bold mb-10 text-white serif">To Heet, the one who stayed.</h3>
-            <p class="text-lg md:text-xl text-gray-400 leading-relaxed mb-6">
-                Thirteen years is a long time. It's enough time to watch the world change, to see people come and go, and to grow into entirely different versions of ourselves. Yet, through every phase, every hardship, and every triumph, one thing remained constant—us.
-            </p>
-            <p class="text-lg md:text-xl text-gray-400 leading-relaxed mb-6">
-                We've shared silences that spoke louder than words, and laughter that made our ribs ache. You aren't just a friend anymore; you are the family I chose. This isn't just about counting the years; it's about making the years count.
-            </p>
-            <p class="text-xl md:text-2xl text-yellow-500 font-semibold italic mt-10">
-                "Here is to the memories we've forged, and the lifetime of adventures still awaiting us."
-            </p>
+        <h4 class="font-display text-2xl text-white mb-2">Electric</h4>
+        <p class="text-gray-400 leading-relaxed text-sm">A laugh that lights up the dullest rooms. Energy that turns ordinary nights into legends.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-8 reveal" style="transition-delay:.2s" data-hover>
+        <div class="quality-icon inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 mb-5">
+          <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
         </div>
-    </section>
-
-    <!-- Interactive 3D Card Section -->
-    <section class="py-20 px-6 flex justify-center items-center min-h-[60vh] tilt-card-container">
-        <div class="tilt-card w-full max-w-2xl rounded-3xl p-10 md:p-16 text-center cursor-pointer reveal relative overflow-hidden" id="tiltCard">
-            <div class="absolute inset-0 bg-gradient-to-br from-yellow-600/20 to-transparent opacity-50 pointer-events-none"></div>
-            <div class="tilt-card-content relative z-10">
-                <h3 class="text-3xl md:text-4xl font-bold text-white mb-4 serif">A Bond Unbroken</h3>
-                <p class="text-gray-300 md:text-lg mb-8">Hover over or tilt this card. Just like our friendship, it shifts and adapts, but never breaks. Thank you for being my rock, my sounding board, and my brother.</p>
-                <div class="inline-block px-8 py-3 border border-yellow-500 text-yellow-500 rounded-full font-semibold uppercase tracking-widest hover:bg-yellow-500 hover:text-black transition duration-300">
-                    Forever Grateful
-                </div>
-            </div>
+        <h4 class="font-display text-2xl text-white mb-2">Brilliant</h4>
+        <p class="text-gray-400 leading-relaxed text-sm">A mind that asks the right questions. The kind of curiosity that drags everyone upward with it.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-8 reveal" data-hover>
+        <div class="quality-icon inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 mb-5">
+          <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
         </div>
-    </section>
-
-    <!-- XML Driven Timeline Section -->
-    <section class="py-20 relative">
-        <div class="text-center mb-20 reveal">
-            <h2 class="text-4xl md:text-5xl font-bold text-white serif mb-4">The Chapters We Wrote</h2>
-            <p class="text-gray-400">A timeline powered by our shared history.</p>
+        <h4 class="font-display text-2xl text-white mb-2">Grounded</h4>
+        <p class="text-gray-400 leading-relaxed text-sm">No matter how high we fly, you keep us real. A home base in human form.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-8 reveal" style="transition-delay:.1s" data-hover>
+        <div class="quality-icon inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 mb-5">
+          <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         </div>
-        
-        <div class="max-w-5xl mx-auto px-6 relative" id="timeline-container">
-            <div class="timeline-line hidden md:block"></div>
-            <!-- XML data will be parsed and injected here by JavaScript -->
+        <h4 class="font-display text-2xl text-white mb-2">Hilarious</h4>
+        <p class="text-gray-400 leading-relaxed text-sm">The uncanny ability to make me laugh when smiling feels impossible. Comedy gold, every time.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-8 reveal" style="transition-delay:.2s" data-hover>
+        <div class="quality-icon inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 mb-5">
+          <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
         </div>
-    </section>
+        <h4 class="font-display text-2xl text-white mb-2">Chosen</h4>
+        <p class="text-gray-400 leading-relaxed text-sm">Not by blood, but by every moment that mattered. The family I picked — and would pick again.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- 3D Photo Album Animation Section -->
-    <section class="album-section relative z-10">
-        <div class="text-center mb-12 reveal">
-            <h2 class="text-4xl md:text-5xl font-bold text-white serif mb-4 text-gradient">Through The Lens</h2>
-            <p class="text-gray-400 max-w-2xl mx-auto px-4">From our lowest points to our greatest victories. Every picture tells our story.</p>
+<section id="album" class="album-section relative z-10">
+  <div class="text-center mb-12 px-6">
+    <p class="font-script text-2xl text-rose-300/70 mb-2 reveal">moments, framed</p>
+    <h2 class="font-display text-4xl md:text-6xl font-light text-white reveal">Through <span class="italic text-gradient">The Lens</span></h2>
+    <p class="text-gray-400 max-w-2xl mx-auto px-4 mt-4 reveal">From our lowest points to our greatest victories. Every picture tells our story.</p>
+  </div>
+  <div class="album-container reveal-scale" id="album-container">
+    <div class="album-item active" data-index="0"><img src="heet1.jpg" alt="Memory 1"><div class="frame"></div><div class="shimmer"></div></div>
+    <div class="album-item next1" data-index="1"><img src="heet2.jpg" alt="Memory 2"><div class="frame"></div><div class="shimmer"></div></div>
+    <div class="album-item next2" data-index="2"><img src="heet3.jpg" alt="Memory 3"><div class="frame"></div><div class="shimmer"></div></div>
+    <div class="album-item" data-index="3"><img src="heet4.jpg" alt="Memory 4"><div class="frame"></div><div class="shimmer"></div></div>
+    <div class="album-item prev2" data-index="4"><img src="heet5.jpg" alt="Memory 5"><div class="frame"></div><div class="shimmer"></div></div>
+    <div class="album-item prev1" data-index="5"><img src="heet6.jpg" alt="Memory 6"><div class="frame"></div><div class="shimmer"></div></div>
+  </div>
+  <div class="flex justify-center gap-6 mt-10 reveal">
+    <button onclick="moveAlbum('prev')" class="p-4 rounded-full bg-white/5 border border-white/10 text-yellow-400 hover:bg-yellow-500 hover:text-black hover:border-yellow-500 transition-all shadow-lg" data-hover aria-label="Previous">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+    </button>
+    <button onclick="moveAlbum('next')" class="p-4 rounded-full bg-white/5 border border-white/10 text-yellow-400 hover:bg-yellow-500 hover:text-black hover:border-yellow-500 transition-all shadow-lg" data-hover aria-label="Next">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+    </button>
+  </div>
+  <p class="text-center text-xs text-gray-600 mt-4 tracking-widest uppercase reveal">auto-playing · click to navigate</p>
+</section>
+
+<section id="forge" class="py-24 px-6 relative z-10 max-w-3xl mx-auto">
+  <div class="reveal glass-panel rounded-[2rem] p-8 md:p-12 relative overflow-hidden">
+    <div class="absolute -top-20 -right-20 w-56 h-56 bg-yellow-500/10 rounded-full blur-[80px] pointer-events-none"></div>
+    <div class="absolute -bottom-20 -left-20 w-56 h-56 bg-rose-400/10 rounded-full blur-[80px] pointer-events-none"></div>
+    <div class="text-center mb-8 relative">
+      <p class="font-script text-2xl text-rose-300/70 mb-1">an ai memory forge</p>
+      <h2 class="font-display text-3xl md:text-5xl font-light text-white">The <span class="italic text-gradient">Memory Forge</span></h2>
+      <p class="text-gray-400 text-sm md:text-base mt-3 max-w-xl mx-auto">Drop in a memory, a moment, or a quirky trait about Heet. The forge will spin it into a heartfelt toast — or a friendly roast.</p>
+    </div>
+    <div class="flex flex-col gap-4 relative">
+      <textarea id="ai-memory-input" rows="3" data-hover class="w-full bg-black/30 border border-white/10 rounded-xl p-4 text-gray-200 focus:outline-none focus:border-yellow-500/60 transition-colors placeholder-gray-600 resize-none font-serif text-lg" placeholder="e.g., That time we stayed up all night playing games..."></textarea>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center mt-2">
+        <button onclick="generateAIContent('toast')" class="flex-1 py-3 px-6 btn-gold rounded-xl font-semibold tracking-wide flex justify-center items-center gap-2 text-sm" data-hover>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          Heartfelt Toast
+        </button>
+        <button onclick="generateAIContent('roast')" class="flex-1 py-3 px-6 btn-ghost rounded-xl font-semibold tracking-wide flex justify-center items-center gap-2 text-sm" data-hover>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.24 17 6.343 18.657 8 19 10 19 12c0 .5 0 1-.5 2"/></svg>
+          Friendly Roast
+        </button>
+      </div>
+      <div id="ai-output-container" class="mt-4 hidden">
+        <div class="p-6 bg-black/40 rounded-xl border border-yellow-500/15 relative">
+          <div id="ai-loading" class="flex flex-col items-center justify-center py-4 hidden">
+            <div class="spinner mb-3"></div>
+            <span class="text-sm text-yellow-400/80 animate-pulse font-script text-lg">forging memories...</span>
+          </div>
+          <div id="ai-result" class="text-gray-300 italic text-lg leading-relaxed text-center font-serif"></div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <div class="album-container reveal" id="album-container">
-            <!-- Replace the 'src' attributes below with your actual Google Photos / Hosted image links -->
-            
-            <div class="album-item active">
-                <img src="heet1.jpg" alt="Memory with Heet 1">
-            </div>
-            <div class="album-item next1">
-                <img src="heet2.jpg" alt="Memory with Heet 2">
-            </div>
-            <div class="album-item next2">
-                <img src="heet3.jpg" alt="Memory with Heet 3">
-            </div>
-            <div class="album-item">
-                <img src="heet4.jpg" alt="Memory with Heet 4">
-            </div>
-            <div class="album-item prev2">
-                <img src="heet5.jpg" alt="Memory with Heet 5">
-            </div>
-            <div class="album-item prev1">
-                <img src="heet6.jpg" alt="Memory with Heet 6">
-            </div>
+<section id="promise" class="py-32 px-6 relative z-10 max-w-4xl mx-auto text-center">
+  <div class="reveal">
+    <div class="divider-ornament mb-6">
+      <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+    </div>
+    <p class="font-script text-2xl text-rose-300/70 mb-3">and so, a promise</p>
+    <h2 class="font-display text-3xl md:text-5xl font-light text-white leading-snug mb-8">For every chapter yet unwritten,<br><span class="italic text-gradient">I'll be there.</span></h2>
+    <p class="font-serif italic text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed mb-10">Through every win you celebrate, every storm you weather, every quiet 2 a.m. you need someone to just listen — you'll find me, the way I've always found you.</p>
+    <svg viewBox="0 0 400 80" class="w-72 mx-auto mb-2" fill="none">
+      <path class="signature-line" d="M10,50 Q40,20 70,45 T140,40 Q170,30 195,50 T270,45 Q310,35 340,55 L380,50" stroke="#d4af37" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <p class="font-script text-3xl text-yellow-300/90 mt-2">— your brother</p>
+  </div>
+</section>
+
+<footer class="py-10 text-center border-t border-white/5 relative z-10 bg-black/30">
+  <div class="divider-ornament mb-4 justify-center">
+    <span class="text-yellow-500/60 text-xs tracking-[0.3em] uppercase">2013 — 2026</span>
+  </div>
+  <p class="text-gray-500 text-sm">Made with <span class="text-yellow-500">❤</span> and code. Celebrating 13 years of brotherhood.</p>
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="mt-4 inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-gray-500 hover:text-yellow-300 transition-colors" data-hover>
+    Back to top
+    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+  </button>
+</footer>
+
+<script id="memory-data" type="text/xml">
+<memoirs>
+  <memoir>
+    <year>2013</year>
+    <title>Where It All Began</title>
+    <description>Two kids, boundless energy, and the start of a story we didn't know we were writing. The year we first crossed paths.</description>
+    <align>left</align>
+  </memoir>
+  <memoir>
+    <year>2016</year>
+    <title>The First Storm</title>
+    <description>Life threw its first real curveball. We learned that showing up matters more than having the right words.</description>
+    <align>right</align>
+  </memoir>
+  <memoir>
+    <year>2018</year>
+    <title>Growing Up Together</title>
+    <description>Navigating the awkward phases, the exams, the late-night talks, and realizing we had each other's backs unconditionally.</description>
+    <align>left</align>
+  </memoir>
+  <memoir>
+    <year>2020</year>
+    <title>The Long Distance</title>
+    <description>Cities apart, but never far. Calls that lasted hours, memes that kept us sane, and the quiet proof that distance is just geography.</description>
+    <align>right</align>
+  </memoir>
+  <memoir>
+    <year>2022</year>
+    <title>Facing the Real World</title>
+    <description>Stepping into adulthood, figuring out careers, relationships, and responsibilities — but never losing our core connection.</description>
+    <align>left</align>
+  </memoir>
+  <memoir>
+    <year>2026</year>
+    <title>Today &amp; Beyond</title>
+    <description>Thirteen incredible years down, and we're just getting started. From the beautiful chaos of Mumbai to our late-night gaming sessions, you've been the one constant through all of life's transitions. Here's to the unbreakable bond we've built, and to the lifetime of adventures still awaiting us.</description>
+    <align>right</align>
+  </memoir>
+</memoirs>
+</script>
+
+<script>
+const canvas=document.getElementById('particle-canvas');
+const ctx=canvas.getContext('2d');
+let particles=[];
+let mouse={x:null,y:null,radius:140};
+let cursorPos={x:window.innerWidth/2,y:window.innerHeight/2};
+
+window.addEventListener('mousemove',e=>{
+  mouse.x=e.x;mouse.y=e.y;
+  cursorPos.x=e.x;cursorPos.y=e.y;
+});
+window.addEventListener('mouseout',()=>{mouse.x=null;mouse.y=null});
+
+function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
+window.addEventListener('resize',()=>{resizeCanvas();initParticles()});
+resizeCanvas();
+
+class Particle{
+  constructor(){
+    this.x=Math.random()*canvas.width;
+    this.y=Math.random()*canvas.height;
+    this.baseSize=Math.random()*1.8+.4;
+    this.size=this.baseSize;
+    this.speedX=Math.random()*.5-.25;
+    this.speedY=Math.random()*.5-.25;
+    this.alpha=Math.random()*.5+.15;
+    this.twinkle=Math.random()*Math.PI*2;
+  }
+  update(){
+    this.x+=this.speedX;this.y+=this.speedY;
+    this.twinkle+=.02;
+    this.size=this.baseSize+Math.sin(this.twinkle)*.4;
+    if(mouse.x!=null){
+      let dx=mouse.x-this.x,dy=mouse.y-this.y;
+      let d=Math.sqrt(dx*dx+dy*dy);
+      if(d<mouse.radius){
+        const f=(mouse.radius-d)/mouse.radius;
+        this.x-=(dx/d)*f*2.5;
+        this.y-=(dy/d)*f*2.5;
+      }
+    }
+    if(this.x<0)this.x=canvas.width;
+    if(this.x>canvas.width)this.x=0;
+    if(this.y<0)this.y=canvas.height;
+    if(this.y>canvas.height)this.y=0;
+  }
+  draw(){
+    ctx.fillStyle=`rgba(212,175,55,${this.alpha})`;
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,Math.max(.2,this.size),0,Math.PI*2);
+    ctx.fill();
+  }
+}
+
+function initParticles(){
+  particles=[];
+  const n=Math.min(110,Math.floor((window.innerWidth*window.innerHeight)/14000));
+  for(let i=0;i<n;i++)particles.push(new Particle());
+}
+
+function animateParticles(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  for(let i=0;i<particles.length;i++){
+    particles[i].update();
+    particles[i].draw();
+    for(let j=i+1;j<particles.length;j++){
+      let dx=particles[i].x-particles[j].x;
+      let dy=particles[i].y-particles[j].y;
+      let d=Math.sqrt(dx*dx+dy*dy);
+      if(d<120){
+        ctx.beginPath();
+        ctx.strokeStyle=`rgba(212,175,55,${.18*(1-d/120)})`;
+        ctx.lineWidth=.5;
+        ctx.moveTo(particles[i].x,particles[i].y);
+        ctx.lineTo(particles[j].x,particles[j].y);
+        ctx.stroke();
+      }
+    }
+    if(mouse.x!=null){
+      let dx=particles[i].x-mouse.x;
+      let dy=particles[i].y-mouse.y;
+      let d=Math.sqrt(dx*dx+dy*dy);
+      if(d<180){
+        ctx.beginPath();
+        ctx.strokeStyle=`rgba(247,231,184,${.25*(1-d/180)})`;
+        ctx.lineWidth=.7;
+        ctx.moveTo(particles[i].x,particles[i].y);
+        ctx.lineTo(mouse.x,mouse.y);
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(animateParticles);
+}
+initParticles();
+animateParticles();
+
+const cursorDot=document.getElementById('cursorDot');
+const cursorRing=document.getElementById('cursorRing');
+let ringX=window.innerWidth/2,ringY=window.innerHeight/2;
+function animateCursor(){
+  cursorDot.style.left=cursorPos.x+'px';
+  cursorDot.style.top=cursorPos.y+'px';
+  ringX+=(cursorPos.x-ringX)*.18;
+  ringY+=(cursorPos.y-ringY)*.18;
+  cursorRing.style.left=ringX+'px';
+  cursorRing.style.top=ringY+'px';
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+document.querySelectorAll('[data-hover], a, button, textarea').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cursorRing.classList.add('hover'));
+  el.addEventListener('mouseleave',()=>cursorRing.classList.remove('hover'));
+});
+
+const scrollProgress=document.getElementById('scroll-progress');
+window.addEventListener('scroll',()=>{
+  const sh=document.documentElement.scrollHeight-window.innerHeight;
+  const p=(window.scrollY/sh)*100;
+  scrollProgress.style.width=p+'%';
+  updateTimelineProgress();
+});
+
+const revealObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(!entry.isIntersecting)return;
+    entry.target.classList.add('active');
+    if(entry.target.hasAttribute('data-words')){
+      const text=entry.target.textContent.trim();
+      entry.target.innerHTML='';
+      const words=text.split(/\s+/);
+      words.forEach((w,i)=>{
+        const span=document.createElement('span');
+        span.className='word';
+        span.style.transitionDelay=(i*40)+'ms';
+        span.textContent=w+'\u00A0';
+        entry.target.appendChild(span);
+      });
+      requestAnimationFrame(()=>{
+        entry.target.querySelectorAll('.word').forEach(word=>word.classList.add('active'));
+      });
+    }
+    if(entry.target.hasAttribute('data-stat')){
+      animateCounter(entry.target);
+    }
+    revealObserver.unobserve(entry.target);
+  });
+},{threshold:.15,rootMargin:'0px 0px -50px 0px'});
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, [data-words], [data-stat]').forEach(el=>revealObserver.observe(el));
+
+function animateCounter(card){
+  const target=parseInt(card.getAttribute('data-stat'));
+  const el=card.querySelector('.stat-number');
+  const duration=1800;
+  const start=performance.now();
+  function step(now){
+    const t=Math.min(1,(now-start)/duration);
+    const eased=1-Math.pow(1-t,3);
+    const val=Math.floor(target*eased);
+    el.textContent=val.toLocaleString();
+    if(t<1)requestAnimationFrame(step);
+    else el.textContent=target.toLocaleString();
+  }
+  requestAnimationFrame(step);
+}
+
+const card=document.getElementById('tiltCard');
+card.addEventListener('mousemove',e=>{
+  const rect=card.getBoundingClientRect();
+  const x=e.clientX-rect.left;
+  const y=e.clientY-rect.top;
+  card.style.setProperty('--spotlight-x',x+'px');
+  card.style.setProperty('--spotlight-y',y+'px');
+  const cx=rect.width/2,cy=rect.height/2;
+  const rx=((y-cy)/cy)*-8;
+  const ry=((x-cx)/cx)*8;
+  card.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg)`;
+});
+card.addEventListener('mouseleave',()=>{card.style.transform='rotateX(0) rotateY(0)'});
+
+const xmlString=document.getElementById('memory-data').textContent;
+const parser=new DOMParser();
+const xmlDoc=parser.parseFromString(xmlString,'text/xml');
+const memoirs=xmlDoc.getElementsByTagName('memoir');
+const timelineContainer=document.getElementById('timeline-container');
+
+for(let i=0;i<memoirs.length;i++){
+  const year=memoirs[i].getElementsByTagName('year')[0]?.textContent||'';
+  const title=memoirs[i].getElementsByTagName('title')[0]?.textContent||'';
+  const desc=memoirs[i].getElementsByTagName('description')[0]?.textContent||'';
+  const align=memoirs[i].getElementsByTagName('align')[0]?.textContent||'left';
+  const flexDir=align==='left'?'md:flex-row':'md:flex-row-reverse';
+  const textDir=align==='left'?'md:text-right md:pr-16':'md:text-left md:pl-16';
+  const html=`
+    <div class="relative flex flex-col ${flexDir} items-center mb-20 reveal" data-memoir-index="${i}">
+      <div class="w-full md:w-1/2 ${textDir} text-center md:text-left mb-8 md:mb-0">
+        <div class="inline-block glass-card rounded-2xl p-8 relative z-10 w-full md:w-5/6 mx-auto text-center md:text-left" data-hover>
+          <div class="flex items-center gap-3 mb-3 ${align==='left'?'md:justify-end':''}">
+            <span class="font-display text-3xl md:text-4xl text-gradient font-light">${year}</span>
+            <span class="h-px w-12 bg-yellow-500/40"></span>
+          </div>
+          <h5 class="font-serif text-white text-xl md:text-2xl font-medium mb-3 italic">${title}</h5>
+          <p class="text-gray-400 leading-relaxed text-sm md:text-base">${desc}</p>
         </div>
+      </div>
+      <div class="timeline-dot hidden md:block" style="top:32px"></div>
+      <div class="w-full md:w-1/2"></div>
+    </div>`;
+  timelineContainer.insertAdjacentHTML('beforeend',html);
+}
+document.querySelectorAll('#timeline-container .reveal').forEach(el=>revealObserver.observe(el));
 
-        <!-- Carousel Controls -->
-        <div class="flex justify-center gap-6 mt-10 reveal">
-            <button onclick="moveAlbum('prev')" class="p-3 rounded-full bg-gray-800 text-yellow-500 hover:bg-yellow-500 hover:text-black transition-colors border border-gray-600 focus:outline-none shadow-lg">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-            </button>
-            <button onclick="moveAlbum('next')" class="p-3 rounded-full bg-gray-800 text-yellow-500 hover:bg-yellow-500 hover:text-black transition-colors border border-gray-600 focus:outline-none shadow-lg">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-            </button>
-        </div>
-    </section>
+function updateTimelineProgress(){
+  const wrap=document.querySelector('.timeline-wrap');
+  if(!wrap)return;
+  const rect=wrap.getBoundingClientRect();
+  const wh=window.innerHeight;
+  const total=rect.height;
+  const scrolled=Math.max(0,Math.min(total,wh/2-rect.top));
+  const pct=Math.max(0,Math.min(100,(scrolled/total)*100));
+  const prog=document.getElementById('timelineProgress');
+  if(prog)prog.style.height=pct+'%';
+  document.querySelectorAll('.timeline-dot').forEach((dot,i)=>{
+    const dotRect=dot.getBoundingClientRect();
+    if(dotRect.top<wh*.6)dot.classList.add('active');
+    else dot.classList.remove('active');
+  });
+}
 
-    <!-- Gemini AI Feature Section -->
-    <section class="py-20 px-6 relative z-10 max-w-3xl mx-auto mt-10">
-        <div class="reveal glass-panel rounded-3xl p-8 md:p-12 relative overflow-hidden border border-yellow-600/30">
-            <div class="absolute -top-20 -right-20 w-48 h-48 bg-yellow-500/10 rounded-full blur-[60px] -z-10 pointer-events-none"></div>
-            
-            <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold text-white serif mb-2 text-gradient">The AI Memory Forge</h2>
-                <p class="text-gray-400 text-sm md:text-base">Enter a brief memory, a funny moment, or a quirky trait about Heet. Our AI will expand it into a heartfelt toast or a witty roast!</p>
-            </div>
+const albumItems=document.querySelectorAll('.album-item');
+let currentAlbumIndex=0;
+let albumAutoplay;
+function updateAlbum(){
+  const total=albumItems.length;
+  albumItems.forEach((item,index)=>{
+    item.className='album-item';
+    let diff=(index-currentAlbumIndex+total)%total;
+    if(diff===0)item.classList.add('active');
+    else if(diff===1)item.classList.add('next1');
+    else if(diff===2)item.classList.add('next2');
+    else if(diff===total-1)item.classList.add('prev1');
+    else if(diff===total-2)item.classList.add('prev2');
+  });
+}
+function moveAlbum(direction){
+  if(direction==='next')currentAlbumIndex=(currentAlbumIndex+1)%albumItems.length;
+  else currentAlbumIndex=(currentAlbumIndex-1+albumItems.length)%albumItems.length;
+  updateAlbum();
+  clearInterval(albumAutoplay);
+  startAlbumAutoplay();
+}
+function startAlbumAutoplay(){
+  albumAutoplay=setInterval(()=>{
+    currentAlbumIndex=(currentAlbumIndex+1)%albumItems.length;
+    updateAlbum();
+  },3800);
+}
+updateAlbum();
+startAlbumAutoplay();
+albumItems.forEach(item=>{
+  item.addEventListener('click',()=>{
+    if(item.classList.contains('next1'))moveAlbum('next');
+    else if(item.classList.contains('prev1'))moveAlbum('prev');
+  });
+});
 
-            <div class="flex flex-col gap-4">
-                <textarea id="ai-memory-input" rows="3" class="w-full bg-[#050814]/50 border border-gray-700 rounded-xl p-4 text-gray-200 focus:outline-none focus:border-yellow-500 transition-colors placeholder-gray-600 resize-none" placeholder="e.g., That time we stayed up all night playing games..."></textarea>
-                
-                <div class="flex flex-col sm:flex-row gap-4 justify-center mt-2">
-                    <button onclick="generateAIContent('toast')" class="flex-1 py-3 px-6 bg-gradient-to-r from-yellow-600 to-yellow-500 text-black font-semibold rounded-xl hover:opacity-90 transition-opacity flex justify-center items-center gap-2">
-                        Heartfelt Toast ✨
-                    </button>
-                    <button onclick="generateAIContent('roast')" class="flex-1 py-3 px-6 bg-[#0f1423] border border-gray-600 text-gray-300 font-semibold rounded-xl hover:bg-gray-800 hover:text-white transition-all flex justify-center items-center gap-2">
-                        Friendly Roast ✨
-                    </button>
-                </div>
+document.getElementById('album-container').addEventListener('error',e=>{
+  const img=e.target;
+  if(img.tagName!=='IMG')return;
+  const item=img.closest('.album-item');
+  if(!item||item.querySelector('.placeholder'))return;
+  const idx=item.dataset.index||'1';
+  const ph=document.createElement('div');
+  ph.className='placeholder';
+  ph.innerHTML='<svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M3 9a2 2 0 012-2h2.5l1.5-2h6l1.5 2H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3.5"/></svg><span class="font-script" style="font-size:1.25rem">Memory '+(parseInt(idx)+1)+'</span>';
+  img.replaceWith(ph);
+},true);
 
-                <!-- AI Output Area -->
-                <div id="ai-output-container" class="mt-6 hidden">
-                    <div class="p-6 bg-[#050814]/80 rounded-xl border border-yellow-500/20 relative">
-                        <div id="ai-loading" class="flex flex-col items-center justify-center py-4 hidden">
-                            <div class="spinner mb-3"></div>
-                            <span class="text-sm text-yellow-500/80 animate-pulse">Forging memories...</span>
-                        </div>
-                        <div id="ai-result" class="text-gray-300 italic text-lg leading-relaxed text-center font-serif"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+const apiKey='';
+const toastTemplates=[
+  "Heet — in {memory}, you didn't just show up. You became the moment itself. Thirteen years of you has been the privilege of a lifetime, brother.",
+  "To Heet: {memory} — and somehow that's just one scene in a film reel of a thousand more. Thank you for being the constant in every frame.",
+  "Here's to you, Heet. {memory}. If thirteen years taught me anything, it's that the best parts of my story always seem to have you in them.",
+  "Heet, brother — {memory}. You turned ordinary days into the ones I'll tell my kids about. Here's to a hundred more years of the same."
+];
+const roastTemplates=[
+  "Heet, {memory} — and somehow you still owe me for that one. Thirteen years of putting up with you, and I'd do it all again, you absolute menace.",
+  "Look, I love you, but {memory} is proof that I deserve a medal. Thirteen years of carrying this friendship — and your dignity — on my back.",
+  "Heet, {memory}. Honestly, I'm not sure if you're my best friend or my longest-running prank. Either way, you're stuck with me forever now.",
+  "Dear Heet: {memory}. I'd roast you harder, but thirteen years has proven you're basically unbreakable. Annoyingly so. Love you, brother."
+];
+function pickTemplate(arr,memory){
+  const t=arr[Math.floor(Math.random()*arr.length)];
+  return t.replace('{memory}',memory.length>80?memory.slice(0,77)+'...':memory);
+}
 
-    <!-- Footer -->
-    <footer class="py-10 text-center border-t border-gray-800 relative z-10 bg-[#050814]">
-        <p class="text-gray-500">Made with ❤️ and Code. Celebrating 13 Years. 2013 - 2026.</p>
-    </footer>
+async function fetchWithRetry(url,options,retries=3){
+  const delays=[800,1800,3500];
+  for(let i=0;i<retries;i++){
+    try{
+      const r=await fetch(url,options);
+      if(!r.ok)throw new Error(r.status);
+      return await r.json();
+    }catch(e){if(i===retries-1)throw e;await new Promise(r=>setTimeout(r,delays[i]))}
+  }
+}
 
-    <!-- Hidden XML Data -->
-    <script id="memory-data" type="text/xml">
-        <memories>
-            <memory>
-                <year>2013</year>
-                <title>Where It All Began</title>
-                <description>Two kids, boundless energy, and the start of a story we didn't know we were writing. The year we first crossed paths.</description>
-                <align>left</align>
-            </memory>
-            <memory>
-                <year>2018</year>
-                <title>Growing Up Together</title>
-                <description>Navigating the awkward phases, the exams, the late-night talks, and realizing we had each other's backs unconditionally.</description>
-                <align>right</align>
-            </memory>
-            <memory>
-                <year>2022</year>
-                <title>Facing the Real World</title>
-                <description>Stepping into adulthood, figuring out careers, relationships, and responsibilities, but never losing our core connection.</description>
-                <align>left</align>
-            </memory>
-            <memory>
-                <year>2026</year>
-                <title>Today & Beyond</title>
-                <description>13 incredible years down, and we're just getting started. From navigating the beautiful chaos of Mumbai to our late-night gaming sessions, you've been the one constant through all of life's transitions. As I dive deeper into tech and we both chase our dreams, I know I'll always have my brother cheering me on. Here is to the unbreakable bond we've built, and to the lifetime of adventures still awaiting us!</description>
-                <align>right</align>
-            </memory>
-        </memories>
-    </script>
+async function generateAIContent(type){
+  const inputEl=document.getElementById('ai-memory-input');
+  const outputEl=document.getElementById('ai-output-container');
+  const resultEl=document.getElementById('ai-result');
+  const loadingEl=document.getElementById('ai-loading');
+  const userInput=inputEl.value.trim();
+  if(!userInput){
+    outputEl.classList.remove('hidden');
+    resultEl.innerHTML="<span class='text-rose-300 not-italic'>Please drop a memory in first.</span>";
+    return;
+  }
+  outputEl.classList.remove('hidden');
+  resultEl.innerHTML='';
+  resultEl.classList.add('hidden');
+  loadingEl.classList.remove('hidden');
 
-    <!-- JavaScript Logic -->
-    <script>
-        // 1. Particle Canvas Background
-        const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
+  let systemPrompt=type==='toast'
+    ?"You are helping someone write a heartfelt, emotional, slightly nostalgic toast to their best friend of 13 years named Heet. Make it touching but grounded, referencing the provided memory. Keep it under 4 sentences. Speak directly to Heet."
+    :"You are helping someone write a friendly, witty, hilarious roast for their best friend of 13 years named Heet. Base it heavily on the provided memory. Keep it good-natured, funny, and under 4 sentences. Speak directly to Heet.";
+  const fullPrompt=`${systemPrompt}\n\nMemory/trait: "${userInput}"`;
 
-        // Add mouse tracking for particle interaction
-        let mouse = { x: null, y: null, radius: 120 };
-        window.addEventListener('mousemove', (event) => {
-            mouse.x = event.x;
-            mouse.y = event.y;
-        });
-        window.addEventListener('mouseout', () => {
-            mouse.x = null;
-            mouse.y = null;
-        });
+  if(!apiKey){
+    setTimeout(()=>{
+      loadingEl.classList.add('hidden');
+      resultEl.classList.remove('hidden');
+      const text=type==='toast'?pickTemplate(toastTemplates,userInput):pickTemplate(roastTemplates,userInput);
+      typeText(resultEl,`"${text}"`);
+    },900);
+    return;
+  }
+  try{
+    const result=await fetchWithRetry(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({contents:[{parts:[{text:fullPrompt}]}]})
+    });
+    const text=result.candidates?.[0]?.content?.parts?.[0]?.text||"Couldn't generate a response. The AI might be napping.";
+    loadingEl.classList.add('hidden');
+    resultEl.classList.remove('hidden');
+    typeText(resultEl,`"${text.replace(/\n/g,'<br>')}"`);
+  }catch(e){
+    loadingEl.classList.add('hidden');
+    resultEl.classList.remove('hidden');
+    const fallback=type==='toast'?pickTemplate(toastTemplates,userInput):pickTemplate(roastTemplates,userInput);
+    typeText(resultEl,`"${fallback}"`);
+  }
+}
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
+function typeText(el,text){
+  el.innerHTML='';
+  let i=0;
+  const speed=18;
+  function step(){
+    if(i<text.length){
+      if(text.substr(i,4)==='<br>'){el.innerHTML+='<br>';i+=4}
+      else{el.innerHTML+=text[i];i++}
+      setTimeout(step,speed);
+    }
+  }
+  step();
+}
 
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const href=a.getAttribute('href');
+    if(href.length>1){
+      e.preventDefault();
+      document.querySelector(href)?.scrollIntoView({behavior:'smooth'});
+    }
+  });
+});
 
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2;
-                this.speedX = Math.random() * 0.5 - 0.25;
-                this.speedY = Math.random() * 0.5 - 0.25;
-                this.color = `rgba(212, 175, 55, ${Math.random() * 0.5 + 0.1})`; // Gold/Yellow tints
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.size > 0.2) this.size -= 0.005; // Twinkle effect
-
-                // Interactive Mouse Repel Effect
-                if (mouse.x != null) {
-                    let dx = mouse.x - this.x;
-                    let dy = mouse.y - this.y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < mouse.radius) {
-                        const forceDirectionX = dx / distance;
-                        const forceDirectionY = dy / distance;
-                        const force = (mouse.radius - distance) / mouse.radius;
-                        const directionX = forceDirectionX * force * -3;
-                        const directionY = forceDirectionY * force * -3;
-                        this.x += directionX;
-                        this.y += directionY;
-                    }
-                }
-
-                // Wrap around screen
-                if (this.x < 0) this.x = canvas.width;
-                if (this.x > canvas.width) this.x = 0;
-                if (this.y < 0) this.y = canvas.height;
-                if (this.y > canvas.height) this.y = 0;
-            }
-            draw() {
-                ctx.fillStyle = this.color;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        function initParticles() {
-            particles = [];
-            let numParticles = (window.innerWidth * window.innerHeight) / 9000;
-            for (let i = 0; i < numParticles; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
-                
-                // Draw connecting lines for nearby particles
-                for (let j = i; j < particles.length; j++) {
-                    let dx = particles[i].x - particles[j].x;
-                    let dy = particles[i].y - particles[j].y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < 100) {
-                        ctx.beginPath();
-                        ctx.strokeStyle = `rgba(212, 175, 55, ${0.1 - distance/1000})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(animateParticles);
-        }
-
-        initParticles();
-        animateParticles();
-
-        // 2. Scroll Reveal Animation via IntersectionObserver
-        const reveals = document.querySelectorAll('.reveal');
-        const revealOptions = {
-            threshold: 0.15,
-            rootMargin: "0px 0px -50px 0px"
-        };
-
-        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target);
-            });
-        }, revealOptions);
-
-        reveals.forEach(reveal => {
-            revealOnScroll.observe(reveal);
-        });
-
-        // 3. Interactive 3D Tilt Card Effect
-        const card = document.getElementById('tiltCard');
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            // Update spotlight CSS variables
-            card.style.setProperty('--spotlight-x', `${x}px`);
-            card.style.setProperty('--spotlight-y', `${y}px`);
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const rotateX = ((y - centerY) / centerY) * -10; // Max rotation degrees
-            const rotateY = ((x - centerX) / centerX) * 10;
-            
-            card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = `rotateX(0deg) rotateY(0deg)`;
-        });
-
-        // 4. XML Parsing and Timeline Generation
-        document.addEventListener("DOMContentLoaded", () => {
-            const xmlString = document.getElementById("memory-data").textContent;
-            const parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(xmlString, "text/xml");
-            const memories = xmlDoc.getElementsByTagName("memory");
-            const container = document.getElementById("timeline-container");
-
-            for (let i = 0; i < memories.length; i++) {
-                let year = memories[i].getElementsByTagName("year")[0]?.textContent || "";
-                let title = memories[i].getElementsByTagName("title")[0]?.textContent || "";
-                let desc = memories[i].getElementsByTagName("description")[0]?.textContent || "";
-                let align = memories[i].getElementsByTagName("align")[0]?.textContent || "left";
-                
-                // Determine layout classes based on alignment
-                let flexDir = align === 'left' ? 'md:flex-row' : 'md:flex-row-reverse';
-                let textDir = align === 'left' ? 'md:text-right md:pr-16' : 'md:text-left md:pl-16';
-                let dotPos = align === 'left' ? 'md:-right-4' : 'md:-left-4';
-
-                // Construct HTML for each timeline item
-                const memoryHTML = `
-                    <div class="relative flex flex-col ${flexDir} items-center mb-16 reveal">
-                        <!-- Content Side -->
-                        <div class="w-full md:w-1/2 ${textDir} text-center md:text-left mb-8 md:mb-0">
-                            <div class="inline-block bg-[#0f1423] p-8 rounded-2xl border border-gray-800 shadow-2xl relative z-10 w-full md:w-5/6 mx-auto hover:border-yellow-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.3)] hover:-translate-y-2 transition-all duration-300 group">
-                                <h4 class="text-yellow-500 font-bold text-2xl mb-2 group-hover:scale-105 transition-transform origin-left">${year}</h4>
-                                <h5 class="text-white text-xl font-semibold mb-3 serif">${title}</h5>
-                                <p class="text-gray-400 leading-relaxed">${desc}</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Center Node -->
-                        <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-yellow-500 rounded-full border-4 border-[#050814] z-20 hidden md:block shadow-[0_0_15px_rgba(212,175,55,0.6)]"></div>
-                        
-                        <!-- Empty space for the other side -->
-                        <div class="w-full md:w-1/2"></div>
-                    </div>
-                `;
-                
-                container.insertAdjacentHTML('beforeend', memoryHTML);
-            }
-            
-            // Re-observe newly injected elements
-            document.querySelectorAll('#timeline-container .reveal').forEach(el => {
-                revealOnScroll.observe(el);
-            });
-        });
-
-        // 5. 3D Photo Album Carousel Logic
-        const albumItems = document.querySelectorAll('.album-item');
-        let currentAlbumIndex = 0;
-        let albumAutoplay;
-
-        function updateAlbum() {
-            const total = albumItems.length;
-            albumItems.forEach((item, index) => {
-                // Remove all classes
-                item.className = 'album-item';
-                
-                // Calculate position relative to current index in a circular way
-                let diff = (index - currentAlbumIndex + total) % total;
-                
-                if (diff === 0) {
-                    item.classList.add('active');
-                } else if (diff === 1) {
-                    item.classList.add('next1');
-                } else if (diff === 2) {
-                    item.classList.add('next2');
-                } else if (diff === total - 1) {
-                    item.classList.add('prev1');
-                } else if (diff === total - 2) {
-                    item.classList.add('prev2');
-                }
-            });
-        }
-
-        function moveAlbum(direction) {
-            if (direction === 'next') {
-                currentAlbumIndex = (currentAlbumIndex + 1) % albumItems.length;
-            } else {
-                currentAlbumIndex = (currentAlbumIndex - 1 + albumItems.length) % albumItems.length;
-            }
-            updateAlbum();
-            
-            // Reset autoplay timer on manual click
-            clearInterval(albumAutoplay);
-            startAlbumAutoplay();
-        }
-
-        function startAlbumAutoplay() {
-            albumAutoplay = setInterval(() => {
-                currentAlbumIndex = (currentAlbumIndex + 1) % albumItems.length;
-                updateAlbum();
-            }, 3500); // Changes image every 3.5 seconds
-        }
-
-        // Initialize album
-        updateAlbum();
-        startAlbumAutoplay();
-
-
-        // 6. Gemini API Integration for AI Memory Forge
-        const apiKey = ""; // Set your key here when deploying outside of the provided environment
-
-        async function fetchWithRetry(url, options, retries = 5) {
-            const delays = [1000, 2000, 4000, 8000, 16000];
-            for (let i = 0; i < retries; i++) {
-                try {
-                    const response = await fetch(url, options);
-                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                    return await response.json();
-                } catch (e) {
-                    if (i === retries - 1) throw e;
-                    await new Promise(res => setTimeout(res, delays[i]));
-                }
-            }
-        }
-
-        async function generateAIContent(type) {
-            const inputEl = document.getElementById('ai-memory-input');
-            const outputContainerEl = document.getElementById('ai-output-container');
-            const resultEl = document.getElementById('ai-result');
-            const loadingEl = document.getElementById('ai-loading');
-            
-            const userInput = inputEl.value.trim();
-            if (!userInput) {
-                outputContainerEl.classList.remove('hidden');
-                resultEl.innerHTML = "<span class='text-red-400'>Please enter a memory or trait first!</span>";
-                return;
-            }
-
-            // UI Loading State
-            outputContainerEl.classList.remove('hidden');
-            resultEl.innerHTML = "";
-            resultEl.classList.add('hidden');
-            loadingEl.classList.remove('hidden');
-
-            let systemPrompt = "";
-            if (type === 'toast') {
-                systemPrompt = "You are helping a guy write a heartfelt, emotional, and slightly nostalgic toast to his best friend of 13 years named Heet. Make it touching but grounded, referencing the provided memory or trait. Keep it under 4 sentences. Speak directly to Heet.";
-            } else {
-                systemPrompt = "You are helping a guy write a friendly, witty, and hilarious roast for his best friend of 13 years named Heet. Base the roast heavily on the provided memory or trait. Keep it good-natured, funny, and under 4 sentences. Speak directly to Heet.";
-            }
-
-            const fullPrompt = `${systemPrompt}\n\nHere is the memory/trait from the user: "${userInput}"`;
-
-            try {
-                const result = await fetchWithRetry(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        contents: [{ parts: [{ text: fullPrompt }] }]
-                    })
-                });
-
-                const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "Couldn't generate a response. The AI might be taking a nap.";
-                
-                loadingEl.classList.add('hidden');
-                resultEl.classList.remove('hidden');
-                resultEl.innerHTML = `"${text.replace(/\n/g, '<br>')}"`;
-            } catch (error) {
-                loadingEl.classList.add('hidden');
-                resultEl.classList.remove('hidden');
-                resultEl.innerHTML = `<span class="text-red-400">Oops, our AI time machine hit a snag. Please try again later!</span>`;
-            }
-        }
-    </script>
+const big=document.getElementById('bigNumber');
+if(big){
+  let displayed=0;
+  const target=13;
+  const id=setInterval(()=>{
+    displayed++;
+    big.textContent=displayed;
+    if(displayed>=target)clearInterval(id);
+  },120);
+}
+</script>
 </body>
 </html>
