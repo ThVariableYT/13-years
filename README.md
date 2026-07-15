@@ -26,15 +26,16 @@ To view or modify this project locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/ThVariableYT/13-years.git](https://github.com/ThVariableYT/13-years.git)```
+   git clone [https://github.com/ThVariableYT/13-years.git](https://github.com/ThVariableYT/13-years.git)
+   ```
 
 2. Navigate to the project directory:
 ```bash
-cd 13-years```
+cd 13-years
+```
 
 
 3. Open `index.html` in your favorite web browser. (Note: A live server extension in your code editor is recommended if you are testing scripts that require a local server).
-```
 
 ## 👤 Author
 
