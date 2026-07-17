@@ -432,9 +432,9 @@ body{
 
 <footer class="py-10 text-center border-t border-white/5 relative z-10 bg-black/30">
   <div class="divider-ornament mb-4 justify-center">
-    <span class="text-yellow-500/60 text-xs tracking-[0.3em] uppercase">2013 — 2026</span>
+    <span class="text-yellow-500/60 text-xs tracking-[0.3em] uppercase">2012 — 2026</span>
   </div>
-  <p class="text-gray-500 text-sm">Made with <span class="text-yellow-500">❤</span> and code. Celebrating 13 years of brotherhood.</p>
+  <p class="text-gray-500 text-sm">Made with <span class="text-yellow-500">❤</span> and code. Celebrating 14 years of brotherhood.</p>
   <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="mt-4 inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-gray-500 hover:text-yellow-300 transition-colors" data-hover>
     Back to top
     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
@@ -444,7 +444,7 @@ body{
 <script id="memory-data" type="text/xml">
 <memoirs>
   <memoir>
-    <year>2013</year>
+    <year>2012</year>
     <title>Where It All Began</title>
     <description>Two kids, boundless energy, and the start of a story we didn't know we were writing. The year we first crossed paths.</description>
     <align>left</align>
@@ -476,7 +476,7 @@ body{
   <memoir>
     <year>2026</year>
     <title>Today &amp; Beyond</title>
-    <description>Thirteen incredible years down, and we're just getting started. From the beautiful chaos of Mumbai to our late-night gaming sessions, you've been the one constant through all of life's transitions. Here's to the unbreakable bond we've built, and to the lifetime of adventures still awaiting us.</description>
+    <description>Fourteen incredible years down, and we're just getting started. From the beautiful chaos of Mumbai to our late-night gaming sessions, you've been the one constant through all of life's transitions. Here's to the unbreakable bond we've built, and to the lifetime of adventures still awaiting us.</description>
     <align>right</align>
   </memoir>
 </memoirs>
@@ -763,16 +763,16 @@ document.getElementById('album-container').addEventListener('error',e=>{
 
 const apiKey='';
 const toastTemplates=[
-  "Heet — in {memory}, you didn't just show up. You became the moment itself. Thirteen years of you has been the privilege of a lifetime, brother.",
+  "Heet — in {memory}, you didn't just show up. You became the moment itself. Fourteen years of you has been the privilege of a lifetime, brother.",
   "To Heet: {memory} — and somehow that's just one scene in a film reel of a thousand more. Thank you for being the constant in every frame.",
-  "Here's to you, Heet. {memory}. If thirteen years taught me anything, it's that the best parts of my story always seem to have you in them.",
+  "Here's to you, Heet. {memory}. If fourteen years taught me anything, it's that the best parts of my story always seem to have you in them.",
   "Heet, brother — {memory}. You turned ordinary days into the ones I'll tell my kids about. Here's to a hundred more years of the same."
 ];
 const roastTemplates=[
-  "Heet, {memory} — and somehow you still owe me for that one. Thirteen years of putting up with you, and I'd do it all again, you absolute menace.",
-  "Look, I love you, but {memory} is proof that I deserve a medal. Thirteen years of carrying this friendship — and your dignity — on my back.",
+  "Heet, {memory} — and somehow you still owe me for that one. Fourteen years of putting up with you, and I'd do it all again, you absolute menace.",
+  "Look, I love you, but {memory} is proof that I deserve a medal. Fourteen years of carrying this friendship — and your dignity — on my back.",
   "Heet, {memory}. Honestly, I'm not sure if you're my best friend or my longest-running prank. Either way, you're stuck with me forever now.",
-  "Dear Heet: {memory}. I'd roast you harder, but thirteen years has proven you're basically unbreakable. Annoyingly so. Love you, brother."
+  "Dear Heet: {memory}. I'd roast you harder, but fourteen years has proven you're basically unbreakable. Annoyingly so. Love you, brother."
 ];
 function pickTemplate(arr,memory){
   const t=arr[Math.floor(Math.random()*arr.length)];
@@ -807,8 +807,8 @@ async function generateAIContent(type){
   loadingEl.classList.remove('hidden');
 
   let systemPrompt=type==='toast'
-    ?"You are helping someone write a heartfelt, emotional, slightly nostalgic toast to their best friend of 13 years named Heet. Make it touching but grounded, referencing the provided memory. Keep it under 4 sentences. Speak directly to Heet."
-    :"You are helping someone write a friendly, witty, hilarious roast for their best friend of 13 years named Heet. Base it heavily on the provided memory. Keep it good-natured, funny, and under 4 sentences. Speak directly to Heet.";
+    ?"You are helping someone write a heartfelt, emotional, slightly nostalgic toast to their best friend of 14 years named Heet. Make it touching but grounded, referencing the provided memory. Keep it under 4 sentences. Speak directly to Heet."
+    :"You are helping someone write a friendly, witty, hilarious roast for their best friend of 14 years named Heet. Base it heavily on the provided memory. Keep it good-natured, funny, and under 4 sentences. Speak directly to Heet.";
   const fullPrompt=`${systemPrompt}\n\nMemory/trait: "${userInput}"`;
 
   if(!apiKey){
@@ -865,7 +865,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 const big=document.getElementById('bigNumber');
 if(big){
   let displayed=0;
-  const target=13;
+  const target=14;
   const id=setInterval(()=>{
     displayed++;
     big.textContent=displayed;
